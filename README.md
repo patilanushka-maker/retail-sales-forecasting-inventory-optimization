@@ -195,7 +195,7 @@ Demand distribution grouped by day of the week, illustrating retail purchasing c
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/retail-sales-forecasting-inventory-optimization.git
+git clone https://github.com/patilanushka-maker/retail-sales-forecasting-inventory-optimization.git
 cd retail-sales-forecasting-inventory-optimization
 ```
 
