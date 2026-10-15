@@ -1,0 +1,15 @@
+{
+  "total_products": 3804,
+  "history_tiers": {
+    "< 7 days (ultra-sparse)": 155,
+    "7 to 28 days (short, insufficient for lag_28)": 75,
+    "29 to 90 days (moderate history)": 291,
+    "91 to 180 days (long history)": 407,
+    "> 180 days (mature catalog)": 2876
+  },
+  "products_with_lag28_capacity": 3574,
+  "products_without_lag28_capacity": 230,
+  "average_calendar_observations": 276.9,
+  "average_positive_demand_days": 72.2,
+  "average_zero_demand_pct": 70.52
+}

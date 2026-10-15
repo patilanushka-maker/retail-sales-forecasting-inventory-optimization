@@ -1,0 +1,287 @@
+{
+  "metadata": {
+    "dataset": "DataCo Smart Supply Chain",
+    "demand_policy": "Gross Placed Retail Demand (excl. CANCELED & SUSPECTED_FRAUD)",
+    "cohort": [
+      "365",
+      "502",
+      "1014",
+      "191",
+      "627",
+      "403",
+      "1004",
+      "1073",
+      "957"
+    ],
+    "train_window": [
+      "2015-01-01",
+      "2017-06-30"
+    ],
+    "validation_window": [
+      "2017-07-01",
+      "2017-08-31"
+    ],
+    "test_window": [
+      "2017-09-01",
+      "2017-10-02"
+    ],
+    "evaluation_protocol": "Rolling 1-day-ahead out-of-sample forecast",
+    "timestamp": "2026-10-15 15:35:53"
+  },
+  "pooled_metrics": {
+    "Seasonal Naive": {
+      "sample_size": 288,
+      "unavailable_predictions": 0,
+      "mae": 10.9201,
+      "rmse": 14.8505,
+      "wape": 32.1937,
+      "macro_mae": 10.9201,
+      "macro_rmse": 13.3038,
+      "macro_wape": 33.1918
+    },
+    "Rolling Mean (7d)": {
+      "sample_size": 288,
+      "unavailable_predictions": 0,
+      "mae": 8.6786,
+      "rmse": 11.8219,
+      "wape": 25.5853,
+      "macro_mae": 8.6786,
+      "macro_rmse": 10.6313,
+      "macro_wape": 26.2244
+    },
+    "Random Forest": {
+      "sample_size": 288,
+      "unavailable_predictions": 0,
+      "mae": 8.3566,
+      "rmse": 11.6369,
+      "wape": 24.6361,
+      "macro_mae": 8.3566,
+      "macro_rmse": 10.3785,
+      "macro_wape": 24.8539
+    }
+  },
+  "per_product_metrics": {
+    "Seasonal Naive": [
+      {
+        "product_id": "1004",
+        "sample_size": 32,
+        "mae": 5.2812,
+        "rmse": 6.7569,
+        "wape": 30.4505,
+        "wape_defined": true
+      },
+      {
+        "product_id": "1014",
+        "sample_size": 32,
+        "mae": 18.5938,
+        "rmse": 22.0702,
+        "wape": 37.8981,
+        "wape_defined": true
+      },
+      {
+        "product_id": "1073",
+        "sample_size": 32,
+        "mae": 6.0,
+        "rmse": 7.5208,
+        "wape": 40.7643,
+        "wape_defined": true
+      },
+      {
+        "product_id": "191",
+        "sample_size": 32,
+        "mae": 14.0,
+        "rmse": 18.109,
+        "wape": 40.2154,
+        "wape_defined": true
+      },
+      {
+        "product_id": "365",
+        "sample_size": 32,
+        "mae": 18.4688,
+        "rmse": 21.2654,
+        "wape": 28.4271,
+        "wape_defined": true
+      },
+      {
+        "product_id": "403",
+        "sample_size": 32,
+        "mae": 4.125,
+        "rmse": 5.0374,
+        "wape": 19.9697,
+        "wape_defined": true
+      },
+      {
+        "product_id": "502",
+        "sample_size": 32,
+        "mae": 14.375,
+        "rmse": 17.0734,
+        "wape": 23.8095,
+        "wape_defined": true
+      },
+      {
+        "product_id": "627",
+        "sample_size": 32,
+        "mae": 12.8125,
+        "rmse": 16.3669,
+        "wape": 42.9319,
+        "wape_defined": true
+      },
+      {
+        "product_id": "957",
+        "sample_size": 32,
+        "mae": 4.625,
+        "rmse": 5.534,
+        "wape": 34.2593,
+        "wape_defined": true
+      }
+    ],
+    "Rolling Mean (7d)": [
+      {
+        "product_id": "1004",
+        "sample_size": 32,
+        "mae": 4.2857,
+        "rmse": 5.4961,
+        "wape": 24.7104,
+        "wape_defined": true
+      },
+      {
+        "product_id": "1014",
+        "sample_size": 32,
+        "mae": 13.5268,
+        "rmse": 15.7127,
+        "wape": 27.5705,
+        "wape_defined": true
+      },
+      {
+        "product_id": "1073",
+        "sample_size": 32,
+        "mae": 4.2098,
+        "rmse": 5.3984,
+        "wape": 28.6018,
+        "wape_defined": true
+      },
+      {
+        "product_id": "191",
+        "sample_size": 32,
+        "mae": 11.2054,
+        "rmse": 14.6779,
+        "wape": 32.1877,
+        "wape_defined": true
+      },
+      {
+        "product_id": "365",
+        "sample_size": 32,
+        "mae": 13.7902,
+        "rmse": 17.1383,
+        "wape": 21.2259,
+        "wape_defined": true
+      },
+      {
+        "product_id": "403",
+        "sample_size": 32,
+        "mae": 3.7812,
+        "rmse": 4.8446,
+        "wape": 18.3056,
+        "wape_defined": true
+      },
+      {
+        "product_id": "502",
+        "sample_size": 32,
+        "mae": 13.1295,
+        "rmse": 15.4133,
+        "wape": 21.7465,
+        "wape_defined": true
+      },
+      {
+        "product_id": "627",
+        "sample_size": 32,
+        "mae": 10.6875,
+        "rmse": 12.7934,
+        "wape": 35.8115,
+        "wape_defined": true
+      },
+      {
+        "product_id": "957",
+        "sample_size": 32,
+        "mae": 3.4911,
+        "rmse": 4.2066,
+        "wape": 25.8598,
+        "wape_defined": true
+      }
+    ],
+    "Random Forest": [
+      {
+        "product_id": "1004",
+        "sample_size": 32,
+        "mae": 4.785,
+        "rmse": 5.8783,
+        "wape": 27.5892,
+        "wape_defined": true
+      },
+      {
+        "product_id": "1014",
+        "sample_size": 32,
+        "mae": 13.5428,
+        "rmse": 16.4122,
+        "wape": 27.6032,
+        "wape_defined": true
+      },
+      {
+        "product_id": "1073",
+        "sample_size": 32,
+        "mae": 3.6819,
+        "rmse": 4.7217,
+        "wape": 25.0149,
+        "wape_defined": true
+      },
+      {
+        "product_id": "191",
+        "sample_size": 32,
+        "mae": 10.0769,
+        "rmse": 13.5273,
+        "wape": 28.9461,
+        "wape_defined": true
+      },
+      {
+        "product_id": "365",
+        "sample_size": 32,
+        "mae": 14.4069,
+        "rmse": 17.4226,
+        "wape": 22.1751,
+        "wape_defined": true
+      },
+      {
+        "product_id": "403",
+        "sample_size": 32,
+        "mae": 3.6062,
+        "rmse": 4.7673,
+        "wape": 17.4584,
+        "wape_defined": true
+      },
+      {
+        "product_id": "502",
+        "sample_size": 32,
+        "mae": 12.3803,
+        "rmse": 14.9818,
+        "wape": 20.5057,
+        "wape_defined": true
+      },
+      {
+        "product_id": "627",
+        "sample_size": 32,
+        "mae": 9.8356,
+        "rmse": 12.0699,
+        "wape": 32.9571,
+        "wape_defined": true
+      },
+      {
+        "product_id": "957",
+        "sample_size": 32,
+        "mae": 2.8937,
+        "rmse": 3.625,
+        "wape": 21.4352,
+        "wape_defined": true
+      }
+    ]
+  }
+}

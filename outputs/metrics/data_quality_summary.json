@@ -1,0 +1,128 @@
+{
+  "validation_report": {
+    "is_valid": true,
+    "schema_ok": true,
+    "non_empty_ok": true,
+    "missing_and_duplicates": {
+      "total_rows": 541909,
+      "missing_counts": {
+        "InvoiceNo": 0,
+        "StockCode": 0,
+        "Description": 1454,
+        "Quantity": 0,
+        "InvoiceDate": 0,
+        "UnitPrice": 0,
+        "CustomerID": 135080,
+        "Country": 0
+      },
+      "missing_percentages": {
+        "InvoiceNo": 0.0,
+        "StockCode": 0.0,
+        "Description": 0.27,
+        "Quantity": 0.0,
+        "InvoiceDate": 0.0,
+        "UnitPrice": 0.0,
+        "CustomerID": 24.93,
+        "Country": 0.0
+      },
+      "total_duplicate_rows": 5268,
+      "key_duplicate_rows": 0
+    },
+    "types_and_values": {
+      "is_valid": true,
+      "invalid_date_count": 0,
+      "invalid_quantity_count": 0,
+      "invalid_unit_price_count": 0,
+      "negative_quantity_count": 10624,
+      "non_positive_price_count": 2517,
+      "errors": [],
+      "warnings": [
+        "10624 records have negative 'Quantity' (represents cancellations/returns; deferred to preprocessing).",
+        "2517 records have non-positive 'UnitPrice' (zero/free or debt adjustments; deferred to preprocessing)."
+      ]
+    }
+  },
+  "classification_audit": {
+    "total_records": 541909,
+    "category_counts": {
+      "positive_sale": 531285,
+      "cancellation": 9288,
+      "return_only": 1336
+    },
+    "category_quantities": {
+      "cancellation": -277574,
+      "positive_sale": 5660981,
+      "return_only": -206957
+    },
+    "category_percentages": {
+      "positive_sale": 98.04,
+      "cancellation": 1.71,
+      "return_only": 0.25
+    },
+    "date_range": {
+      "min": "2010-12-01 00:00:00",
+      "max": "2011-12-09 00:00:00"
+    },
+    "unique_products": 3958
+  },
+  "zero_filling_report": {
+    "window_policy": "product_lifespan",
+    "total_product_days": 1053334,
+    "observed_sales_days": 274616,
+    "zero_filled_days": 778718,
+    "zero_fill_ratio": 0.7393,
+    "sparse_products_count": 522,
+    "sparse_products": [
+      "10123C",
+      "10124A",
+      "10124G",
+      "16010",
+      "16033",
+      "16043",
+      "16049",
+      "16151A",
+      "16161M",
+      "16169N",
+      "16169P",
+      "16202A",
+      "16202B",
+      "16202E",
+      "16206B",
+      "16244B",
+      "17001",
+      "17007B",
+      "17028J",
+      "17109D",
+      "17174",
+      "17191A",
+      "18097A",
+      "20671",
+      "20678",
+      "20695",
+      "20703",
+      "20785",
+      "20793",
+      "20798",
+      "20816",
+      "20818",
+      "20820",
+      "20821",
+      "20823",
+      "20827",
+      "20860",
+      "20861",
+      "20871",
+      "20878",
+      "20892",
+      "20906",
+      "20910",
+      "20935",
+      "20954",
+      "20964",
+      "21009",
+      "21011",
+      "21018",
+      "21120"
+    ]
+  }
+}

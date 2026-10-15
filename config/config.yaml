@@ -1,0 +1,95 @@
+# Configuration for Retail Demand Forecasting & Inventory Optimization System
+# Note: These are baseline default parameter placeholders.
+
+project:
+  name: "Retail-Sales-Forecasting-Inventory-Optimization"
+  version: "0.1.0"
+  random_seed: 42
+
+paths:
+  raw_data_dir: "data/raw"
+  interim_data_dir: "data/interim"
+  processed_data_dir: "data/processed"
+  models_dir: "models"
+  outputs_dir: "outputs"
+
+data_processing:
+  raw_dataset_name: "uci_online_retail"
+  raw_file_name: "Online Retail.xlsx"  # Standard UCI format (.xlsx or .csv)
+  # Canonical UCI raw transaction column names
+  raw_columns:
+    invoice_no: "InvoiceNo"
+    stock_code: "StockCode"
+    description: "Description"
+    quantity: "Quantity"
+    invoice_date: "InvoiceDate"
+    unit_price: "UnitPrice"
+    customer_id: "CustomerID"
+    country: "Country"
+  # Target processed time series columns
+  date_column: "date"
+  product_id_column: "product_id"
+  target_column: "demand"
+
+  preprocessing:
+    interim_cleaned_file: "data/interim/cleaned_transactions.parquet"
+    processed_demand_file: "data/processed/daily_product_demand.parquet"
+    quality_summary_file: "outputs/metrics/data_quality_summary.json"
+    exclude_cancellations: true
+    exclude_negative_quantities: true
+    exclude_special_stock_codes: true
+    special_stock_codes:
+      - "POST"
+      - "D"
+      - "M"
+      - "BANK CHARGES"
+      - "AMAZONFEE"
+      - "CRUK"
+      - "S"
+      - "B"
+      - "DOT"
+    zero_filling:
+      policy: "product_lifespan"  # "product_lifespan" (from first to last sale), "global", or "none"
+      fill_value: 0.0
+      min_active_days_sparse_threshold: 7
+
+features:
+  lags: [1, 7, 14, 28]
+  rolling_windows: [7, 14, 28]
+  calendar_features:
+    include_dayofweek: true
+    include_month: true
+    include_is_weekend: true
+
+forecasting:
+  test_size_days: 28  # 4-week test forecast horizon
+  baseline:
+    seasonal_period: 7
+  random_forest:
+    n_estimators: 100
+    max_depth: 10
+    random_state: 42
+    n_jobs: -1
+
+inventory:
+  # Operational Boundary Disclaimer:
+  # All parameters below represent SIMULATED operational policies and warehouse states.
+  # The UCI Online Retail dataset does not record physical stock levels, supplier contracts,
+  # or true procurement costs.
+  target_service_level: 0.95          # 95% Cycle Service Level (CSL, z = 1.645)
+  lead_time_days: 7                   # Supplier replenishment lead time in days (L)
+  lead_time_std_days: 0.0             # Lead time variability std (0.0 = fixed lead time)
+  review_period_days: 1               # Periodic review frequency in days (R = 1 -> Protection Period P = L + R = 8)
+  rounding_mode: "ceil"               # Whole-unit rounding policy ('ceil' protects safety stock, 'round', or 'floor')
+  
+  # Simulated Operational Costs & Initial States
+  simulated_order_cost: 50.0                  # Fixed setup/administrative cost per replenishment order ($)
+  simulated_holding_cost_annual_per_unit: 2.0 # Annual inventory carrying cost per physical unit ($/unit/year)
+  simulated_default_on_hand: 0.0              # Default on-hand stock when unobserved
+  simulated_default_on_order: 0.0             # Default on-order transit stock
+  simulated_default_backorders: 0.0           # Default committed unfulfilled backorders
+  
+  # Forecast Error Uncertainty Estimation
+  uncertainty_min_observations: 7             # Minimum out-of-sample test days to use per-product error std
+  uncertainty_fallback_policy: "catalog_pooled" # Strategy for sparse products ('catalog_pooled' or 'none')
+

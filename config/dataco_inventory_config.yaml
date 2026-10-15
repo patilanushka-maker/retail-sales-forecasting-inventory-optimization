@@ -1,0 +1,59 @@
+# DataCo Smart Supply Chain Inventory Optimization Configuration
+# Note: All parameters below represent SIMULATED operational parameters and assumptions.
+# DataCo contains customer order and shipping records; it does NOT record real warehouse inventory,
+# supplier contracts, purchase-order issuance, or physical warehouse stockouts.
+
+project:
+  dataset_name: "dataco_smart_supply_chain"
+  version: "0.1.0"
+  random_seed: 42
+
+paths:
+  forecast_comparison_file: "outputs/dataco/forecasts/dataco_forecast_comparison.parquet"
+  validation_forecasts_file: "outputs/dataco/forecasts/dataco_validation_forecasts.parquet"
+  fixed_origin_forecasts_file: "outputs/dataco/inventory/dataco_fixed_origin_forecasts.parquet"
+  forecast_metrics_file: "outputs/dataco/metrics/dataco_forecast_metrics.json"
+  product_catalog_file: "data/processed/dataco_product_catalog.parquet"
+  output_recommendations_parquet: "outputs/dataco/inventory/dataco_inventory_recommendations.parquet"
+  output_recommendations_csv: "outputs/dataco/inventory/dataco_replenishment_orders.csv"
+
+inventory_policy:
+  # Service level target (Cycle Service Level, CSL between 0.0 and 1.0 exclusive)
+  # 0.95 corresponds to z = 1.6449 under standard normal distribution
+  service_level_target: 0.95
+
+  # Assumed supplier replenishment lead time in days (inbound factory to warehouse)
+  # IMPORTANT: DataCo's observed 'Days for shipping (real)' represents outbound carrier delivery
+  # from warehouse to customer (0-6 days). It is NOT supplier lead time.
+  assumed_supplier_lead_time_days: 7
+  assumed_supplier_lead_time_std_days: 0.0
+
+  # Periodic review period in days (daily review R = 1 -> Protection Period P = L + R = 8 days)
+  review_period_days: 1
+
+  # Rounding policy for order replenishment quantities ('ceil' to conservatively protect safety stock, 'round', or 'floor')
+  rounding_mode: "ceil"
+
+  # Simulated warehouse inventory positions (illustrative defaults when actual warehouse counts are unobserved)
+  simulated_default_on_hand: 50.0
+  simulated_default_on_order: 0.0
+  simulated_default_backorders: 0.0
+
+  # Simulated cost parameters for optional Economic Order Quantity (EOQ) benchmarking
+  simulated_order_cost_fixed: 50.0                  # Fixed procurement order setup cost ($/PO)
+  simulated_holding_cost_annual_per_unit: 2.0       # Annual carrying cost ($/unit/year)
+
+forecast_contract:
+  # Model to use for fixed-origin forecasting
+  selected_model: "Random Forest"
+  # Forecast horizon length in days (covers lead time L=7 plus review period R=1)
+  forecast_horizon_days: 8
+  # Forecast origin date for the demonstration scenario (2017-08-31)
+  forecast_origin_date: "2017-08-31"
+  # Forecast method: fixed-origin multi-step recursive rollout
+  forecast_method: "recursive_multi_step"
+  # Uncertainty estimation configuration (strictly pre-decision)
+  residual_cutoff_date: "2017-08-31"
+  uncertainty_method: "sample_std"                # 'sample_std' (dispersion) or 'rmse'
+  min_observations_uncertainty: 14
+

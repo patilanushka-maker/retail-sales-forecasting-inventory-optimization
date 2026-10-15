@@ -1,0 +1,12 @@
+# Licensing Decision (Pending User Determination)
+
+The open-source or proprietary licensing choice for the "Retail-Sales-Forecasting-Inventory-Optimization" project has been intentionally deferred to the project owner.
+
+### Standard Candidate Licenses Under Consideration:
+1. **MIT License**: Recommended if the project is intended as a permissive open-source showcase for portfolios and community reuse.
+2. **Apache License 2.0**: Recommended if explicit patent grant protections and contributor copyright terms are required.
+3. **GNU General Public License v3 (GPLv3)**: Recommended if all derivative projects must remain open-source copyleft.
+4. **Proprietary / All Rights Reserved**: Recommended if the intellectual property and forecasting algorithms remain private.
+
+---
+*Status: Awaiting project owner decision. Please replace this file with the chosen license text.*
